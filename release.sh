@@ -8,13 +8,13 @@ fi
 
 RaspberryPi=$1
 
-ssh $RaspberryPi "sudo systemctl stop Red"
-ssh $RaspberryPi "sudo systemctl disable Red"
-ssh $RaspberryPi "rm -rf Red"
-ssh $RaspberryPi "mkdir Red"
-scp -r ./stage/Red* $RaspberryPi:Red/
-ssh $RaspberryPi "chmod 755 ./Red/Red"
-scp ./stage/Red.service $RaspberryPi:
-ssh $RaspberryPi "sudo mv Red.service /lib/systemd/system/"
-ssh $RaspberryPi "sudo systemctl enable Red"
-ssh $RaspberryPi "sudo systemctl start Red"
+ssh $RaspberryPi "sudo systemctl stop red"
+ssh $RaspberryPi "sudo systemctl disable red"
+ssh $RaspberryPi "rm -rf red"
+ssh $RaspberryPi "mkdir red"
+scp -r ./stage/red/* $RaspberryPi:red/
+ssh $RaspberryPi "chmod 755 ./red/red"
+scp ./stage/red.service $RaspberryPi:
+ssh $RaspberryPi "sudo mv red.service /lib/systemd/system/red.service"
+ssh $RaspberryPi "sudo systemctl enable red"
+ssh $RaspberryPi "sudo systemctl start red"

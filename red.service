@@ -1,12 +1,12 @@
 [Unit]
-Description=My ASP.NET Core Web App
+Description=Red Raspberry An ASP.NET Core Web App
 After=nginx.service
  
 [Service]
 Type=simple
 User=pi
-WorkingDirectory=/home/pi/WebApp1
-ExecStart=/home/pi/WebApp1/webapp1
+WorkingDirectory=/home/pi/red
+ExecStart=/home/pi/red/red
 Restart=always
  
 [Install]
