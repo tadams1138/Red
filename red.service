@@ -1,0 +1,13 @@
+[Unit]
+Description=My ASP.NET Core Web App
+After=nginx.service
+ 
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/WebApp1
+ExecStart=/home/pi/WebApp1/webapp1
+Restart=always
+ 
+[Install]
+WantedBy=multi-user.target
