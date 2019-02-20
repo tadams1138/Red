@@ -33,7 +33,7 @@ namespace red
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
+            services.AddResponseCaching();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -41,7 +41,7 @@ namespace red
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UseHealthChecks("/health");
-            
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -57,8 +57,8 @@ namespace red
             {
                 ForwardedHeaders = ForwardedHeaders.All
             });
-			
-			// Patch path base with forwarded path
+
+            // Patch path base with forwarded path
             app.Use(async (context, next) =>
             {
                 var forwardedPath = context.Request.Headers["X-Forwarded-Path"].FirstOrDefault();
@@ -66,12 +66,29 @@ namespace red
                 {
                     context.Request.PathBase = forwardedPath;
                 }
-             
+
                 await next();
             });
 
             app.UseStaticFiles();
             app.UseCookiePolicy();
+
+            app.UseResponseCaching();
+
+            app.Use(async (context, next) =>
+            {
+                // For GetTypedHeaders, add: using Microsoft.AspNetCore.Http;
+                context.Response.GetTypedHeaders().CacheControl =
+                    new Microsoft.Net.Http.Headers.CacheControlHeaderValue()
+                    {
+                        Public = true,
+                        MaxAge = TimeSpan.FromMinutes(2)
+                    };
+                context.Response.Headers[Microsoft.Net.Http.Headers.HeaderNames.Vary] =
+                    new string[] {"Accept-Encoding"};
+
+                await next();
+            });
 
             app.UseMvc(routes =>
             {
