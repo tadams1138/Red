@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using System.Globalization
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -48,7 +49,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2019 - red - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a> Cached: @DateTime.Now.ToString()
+            &copy; 2019 - red - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a> Cached: @DateTime.Now.ToString(CultureInfo.CurrentCulture)
         </div>
     </footer>
 

@@ -1,5 +1,3 @@
-using System;
-
 namespace red.Models
 {
     public class ErrorViewModel
