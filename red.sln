@@ -13,6 +13,8 @@ ProjectSection(SolutionItems) = preProject
 	stage.sh = stage.sh
 EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{D8E4E18F-E5ED-4A79-A342-1C2168D79F1E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
