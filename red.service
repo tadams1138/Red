@@ -1,13 +1,16 @@
 [Unit]
 Description=Red Raspberry An ASP.NET Core Web App
-After=nginx.service
  
 [Service]
-Type=simple
-User=pi
 WorkingDirectory=/home/pi/red
 ExecStart=/home/pi/red/red
 Restart=always
- 
+RestartSec=10
+KillSignal=SIGINT
+SyslogIdentifier=red-raspberry
+User=pi
+Environment=ASPNETCORE_ENVIRONMENT=Production
+Environment=ASPNETCORE_URLS=http://localhost:5000 
+
 [Install]
 WantedBy=multi-user.target
