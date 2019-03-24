@@ -68,12 +68,13 @@
             $('.toast').toast('show');
             
             var connection = new signalR.HubConnectionBuilder()
-                .withUrl('/alerts')
+                .withUrl('/red/signalr')
                 .build();
 
             // Create a function that the hub can call to broadcast messages.
             connection.on('broadcastAlert',
                 function(message) {
+                    console.info(message);
                     var alertsDiv = document.getElementById('alerts');
                     var toast = document.createElement('div');
                     toast.setAttribute('class', 'toast');

@@ -65,7 +65,7 @@ namespace red
             app.UseCookiePolicy();
             app.UseSignalR(routes =>
             {
-                routes.MapHub<AlertsHub>("/alerts");
+                routes.MapHub<AlertsHub>("/signalr");
             });
 
             app.UseResponseCaching();
