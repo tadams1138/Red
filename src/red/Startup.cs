@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
-using red.Chat;
+using red.Alerts;
 
 namespace red
 {
@@ -65,7 +65,7 @@ namespace red
             app.UseCookiePolicy();
             app.UseSignalR(routes =>
             {
-                routes.MapHub<ChatHub>("/chat");
+                routes.MapHub<AlertsHub>("/alerts");
             });
 
             app.UseResponseCaching();
