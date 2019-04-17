@@ -37,9 +37,7 @@
     </main>
 </div>
 
-<div aria-live="polite" aria-atomic="true" style="position: relative; min-height: 200px;">
-    <div id="alerts" style="position: absolute; top: 0; right: 0;">
-    </div>
+<div class="alerts" id="alerts" aria-live="polite" aria-atomic="true">
 </div>
 
 <footer class="border-top footer text-muted">
@@ -57,56 +55,10 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+<script type="text/javascript" src="~/lib/signalr/dist/browser/signalr.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
-<script type="text/javascript" src="lib/signalr/dist/browser/signalr.min.js"></script>
 
 @RenderSection("Scripts", required: false)
 
-<script type="text/javascript">
-    document.addEventListener('DOMContentLoaded',
-        function() {
-            $('.toast').toast('show');
-            
-            var connection = new signalR.HubConnectionBuilder()
-                .withUrl('/red/signalr')
-                .build();
-
-            // Create a function that the hub can call to broadcast messages.
-            connection.on('broadcastAlert',
-                function(message) {
-                    console.info(message);
-                    var alertsDiv = document.getElementById('alerts');
-                    var toast = document.createElement('div');
-                    toast.setAttribute('class', 'toast');
-                    toast.setAttribute('role', 'alert');
-                    toast.setAttribute('aria-live', 'assertive');
-                    toast.setAttribute('aria-atomic', 'true');
-                    toast.setAttribute('data-delay', '10000');
-                    var header = document.createElement('div');
-                    header.setAttribute('class', 'toast-header');
-                    header.innerHTML = '<strong class="mr-auto">Alert</strong>';
-                    var body = document.createElement('div');
-                    body.setAttribute('class', 'toast-body');
-                    body.innerHTML = message;
-                    toast.appendChild(header);
-                    toast.appendChild(body);
-                    alertsDiv.appendChild(toast);
-                    $(toast).on('hidden.bs.toast',
-                        function() {
-                            alertsDiv.removeChild(toast);
-                        });
-                    $(toast).toast('show');
-                });
-
-            // Transport fallback functionality is now built into start.
-            connection.start()
-                .then(() => {
-                    console.log('connection started');
-                })
-                .catch(error => {
-                    console.error(error.message);
-                });
-        });
-</script>
 </body>
 </html>
