@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
+using red.Alerts;
 
 namespace red
 {
@@ -14,6 +15,7 @@ namespace red
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSignalR();
             services.AddHealthChecks();
             services.Configure<CookiePolicyOptions>(options =>
             {
@@ -57,8 +59,14 @@ namespace red
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-            app.UseStaticFiles();
+
+            app.UseFileServer();
+
             app.UseCookiePolicy();
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<AlertsHub>("/signalr");
+            });
 
             app.UseResponseCaching();
 
@@ -84,7 +92,5 @@ namespace red
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
-
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
     }
 }
