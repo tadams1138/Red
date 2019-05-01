@@ -15,6 +15,8 @@ EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{D8E4E18F-E5ED-4A79-A342-1C2168D79F1E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "red.Tests.Unit", "test\red.Tests.Unit\red.Tests.Unit.csproj", "{C48D5B06-22CE-4D5A-AFB8-C91B392443C5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,11 +24,16 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{3450A4B8-77CC-447B-9918-A253C48276B3} = {B2BBFC90-39D9-4F93-B98A-172D61240934}
+		{C48D5B06-22CE-4D5A-AFB8-C91B392443C5} = {D8E4E18F-E5ED-4A79-A342-1C2168D79F1E}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{3450A4B8-77CC-447B-9918-A253C48276B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3450A4B8-77CC-447B-9918-A253C48276B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3450A4B8-77CC-447B-9918-A253C48276B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3450A4B8-77CC-447B-9918-A253C48276B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C48D5B06-22CE-4D5A-AFB8-C91B392443C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C48D5B06-22CE-4D5A-AFB8-C91B392443C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C48D5B06-22CE-4D5A-AFB8-C91B392443C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C48D5B06-22CE-4D5A-AFB8-C91B392443C5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

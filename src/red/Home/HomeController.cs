@@ -1,8 +1,8 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using red.Models;
+using red.Error;
 
-namespace red.Controllers
+namespace red.Home
 {
     public class HomeController : Controller
     {

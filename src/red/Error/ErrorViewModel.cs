@@ -1,4 +1,4 @@
-namespace red.Models
+namespace red.Error
 {
     public class ErrorViewModel
     {
